@@ -1,0 +1,25 @@
+{
+  "name": "promise-utils",
+  "version": "0.0.1",
+  "description": "> Warning: Not intended for production use; this is purely a for fun project.  See LICENSE.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krrg/promise-utils.git"
+  },
+  "author": "Ken Reese",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/krrg/promise-utils/issues"
+  },
+  "homepage": "https://github.com/krrg/promise-utils#readme",
+  "dependencies": {
+    "lodash": "^4.6.1"
+  }
+}
