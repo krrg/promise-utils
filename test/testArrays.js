@@ -38,7 +38,7 @@ describe("Arrays", function() {
 
         Arrays.afterAll([A, B, C])
             .then(function(promises) {
-                assert(_.isEqual([A, B, C], promises));
+                console.log(promises);
                 done();
             })
     });
@@ -55,8 +55,8 @@ describe("Arrays", function() {
     });
 
     it(".any()", function(done) {
-        let A = Promise.resolve('a');
         let B = Promise.reject('b');
+        let A = Promise.resolve('a');
 
         Arrays.any([A, B])
             .then(function(val) {
@@ -64,5 +64,53 @@ describe("Arrays", function() {
                 done();
             })
     });
+
+    it(".all() rejection", function(done) {
+        let A = Promise.resolve('a');
+        let B = Promise.reject('b');
+        let C = Promise.resolve('c');
+
+        Arrays.all([A, B, C])
+            .catch(function(reason) {
+                assert(reason === 'b');
+                done();
+            });
+    });
+
+    it(".allRace() rejection", function(done) {
+        let A = Promise.resolve('a');
+        let B = Promise.reject('b');
+        let C = Promise.resolve('c');
+
+        Arrays.allRace([A, B, C])
+            .catch(function(reason) {
+                assert(reason === 'b');
+                done();
+            })
+    });
+
+    it(".allOrdered() rejection", function(done) {
+        let A = Promise.resolve('a');
+        let B = Promise.resolve('b');
+        let C = Promise.reject('c');
+
+        Arrays.allOrdered([A, B, C])
+            .catch(function(reason){
+                assert(reason === 'c');
+                done();
+            })
+    });
+
+    it('any() rejection', function(done) {
+        let A = Promise.reject('a');
+        let B = Promise.reject('b');
+
+        Arrays.any([A, B])
+            .catch(function(val) {
+                done();
+            })
+
+    });
+
 
 });
