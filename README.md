@@ -18,7 +18,7 @@ Returns a single promise that is resolved when all of the given promises are res
 Returns a single promise that is resolved when all of the given promises are resolved. The resolved value will be an array of values in the order that their corresponding promises were passed into the function in (not necessarily the order the promises were resolved in). If any of the promises rejects, then returned promise will also reject with the reason given by the first promise to reject.
 
 ### `.afterAll(promises)`
-Returns a single promise that is resolved when all of the given promises are either resolved or rejected. The resolved value will be an array of `Promise` objects, which may have either been rejected or resolved. The promise returned from this function will never itself be rejected.
+Returns a single promise that is resolved when all of the given promises are either resolved or rejected. The resolved value will be an array of descriptor objects containing the resolved value or the rejected reason. The promise returned from this function will never itself be rejected.
 
 ### `.both(promise, promise)`
 Returns a single promise that is resolved when both of the given promises are resolved. The resolved value will be an array of values from the returned promises in the same order their corresponding promises were passed in. If either promise rejects, then the returned promise will also reject.
